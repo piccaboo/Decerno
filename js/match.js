@@ -31,7 +31,10 @@ function createCard(iCounter) {
   var currentCard = new card("card" + iCounter);
   iRandomImage = getRandomImageForCard();
   cardAllocation[iRandomImage] = cardAllocation[iRandomImage] + 1;
-
+  currentCard.setR(Math.floor(Math.random() * 255));
+  currentCard.setG(Math.floor(Math.random() * 255));
+  currentCard.setB(Math.floor(Math.random() * 255));
+  currentCard.setColor();
   currentCard.setFrontColor("tileColor" + Math.floor((Math.random() * 5) + 1));
   // currentCard.setFrontContentImage("images/backOfCards.png");
   currentCard.setStartAt(500 * Math.floor((Math.random() * 5) + 1));
@@ -49,7 +52,7 @@ function initState() {
     cards.pop();
   }
 
-  $('#board').empty();
+  $('#gameSection').empty();
   iTimer = 0;
 }
 

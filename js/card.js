@@ -21,9 +21,7 @@ function card(id) {
     });
 
     // $("#" + this.id + " img").show();
-    // $("#" + this.id).css('background', 'red');
-    $("#" + this.id).css('background-size', '0 0'); //gömmer bakgrundsbilden som är given i uppgiften
-    // $("#" + this.id).css("background-color", "rgb(' + this.color + ')");
+    $("#" + this.id).css('background-image', ''); //gömmer bakgrundsbilden som är given i uppgiften
 
     this.flipped = true;
   };
@@ -38,27 +36,27 @@ function card(id) {
   this.revertFlip = function() {
     console.log("Reverting Card " + this.id);
     // $("#" + this.id + " img").hide();
-    $("#" + this.id).css('background-size', '100% 100%');
-    $("#" + this.id + ".colorSquare").css('visibility', 'hidden');
+    $(".colorSquare").remove(); //Tar bort färgrutan och visar baksidan av kortet igen
+    $("#" + this.id).css('background-image','url(images/backOfCards.png)'); //lägger till kortet igen
     $("#" + this.id).revertFlip();
     this.flipped = false;
   };
 
   this.setR = function(sR) {
     this.r = sR;
-  }
+  };
 
   this.setG = function(sG) {
     this.g = sG;
-  }
+  };
 
   this.setB = function(sB) {
     this.b = sB;
-  }
+  };
 
-  this.setColor = function(sC) {
+  this.setColor = function() {
     this.color = '' + this.r + ', ' + this.g + ', ' + this.b + '';
-  }
+  };
 
 // sätter bild på kortet som ska vändas, SKA EJ ANVÄNDAS
   this.setBackContentImage = function(sBackContentImage) {
@@ -85,9 +83,9 @@ function card(id) {
   this.setFlipMethod = function(sFlipMethod) {
     this.flipMethod = sFlipMethod;
   };
-// HÅLL KOLL PÅ DENNA
+// Lägger till bakgrundsbilden som är given i uppgiften
   this.getHTML = function() {
-    return '<div id="' + this.id + '" class="card ' + this.frontColor + '" style="background-image: url(images/backOfCards.png)"></div>';
+    return '<div id="' + this.id + '" class="card ' + this.frontColor + '" style="background-image: url(images/backOfCards.png);"></div>';
   };
 
   this.getStartAt = function() {
@@ -98,9 +96,10 @@ function card(id) {
     return this.flipped;
   };
 
+  //Ritar upp divs med tillhörande färgkoder
   this.getBackContent = function() {
     // return '<img src="' + this.backContentImage + '" />';
-    return '<div class="colorSquare" style="background-color: rgb(210,20,90)"></div>';
+    return '<div class="colorSquare" style="background-color: rgb(' + this.color + ')" />';
   };
 
   this.getBackContentImage = function() {
