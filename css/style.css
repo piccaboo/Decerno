@@ -2,12 +2,21 @@ root {
   display: block;
 }
 
+body {
+  width: 450px;
+}
+
 #board{
-  height: 500px;
-  width: 400px;
+  height: 420px;
+  width: 420px;
 }
 
 #score {
+  width: 420px;
+  height: auto;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
   float: left;
 }
 
@@ -16,11 +25,37 @@ root {
 }
 
 #gameOver {
+  position: absolute;
+  width: 420px;
+  margin-left: 70px;
+  margin-top: 100px;
+  font-size: 40px;
   float: left;
 }
 
-.card {
+#btn {
+  float: left;
+  margin-left: 175px;
+}
+
+.cards {
   width: 100px;
   height: 100px;
   float: left;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.front {
+  width: 100px;
+  height: 100px;
+  float: left;
+  position: absolute;
+}
+
+.back {
+  width: 100px;
+  height: 100px;
+  float: left;
+  position: absolute;
 }
